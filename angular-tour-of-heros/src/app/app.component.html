@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <div class="jumbotron">
+        <div class="col-push-md-2">
+            <img class="rounded float-right" alt="E Shield" width="210px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDUuNDUgMjY5LjQ4Ij4NCiAgPGc+DQogICAgPGc+DQogICAgICA8cGF0aCBkPSJNMTIyLjczLDBWMjY5LjQ4bDc5Ljg3LTU1Ljg0UTIyNCwxMjUuMzIsMjQ1LjQ1LDM3WiIgc3R5bGU9ImZpbGw6ICNjMTI3MmQiLz4NCiAgICAgIDxwYXRoIGQ9Ik0xMjIuNzMsMFYyNjkuNDhMNDIuODYsMjEzLjY0UTIxLjQzLDEyNS4zMiwwLDM3WiIgc3R5bGU9ImZpbGw6IHJlZCIvPg0KICAgIDwvZz4NCiAgICA8cGF0aCBkPSJNODMsNTguNDRoODAuMTZWODIuOEgxMTEuOTF2MjUuNzRoNDMuNjJ2MjQuMTdIMTExLjkxdjI5LjQ3aDUzLjI0djI0LjM2SDgzWiIgc3R5bGU9ImZpbGw6ICNmZmYiLz4NCiAgPC9nPg0KPC9zdmc+"></div>
+        <div class="col-md-10">
+            <h1 class="display-4">{{ title }}</h1>
+            <p class="lead">This will demonstrate using the Angular 6 CLI to generate templates for applications.</p>
+            <hr class="my-4">
+            <p>Tutorials followed: <a href="//angular.io/guide/quickstart" target="_blank">angular.io/guide/quickstart</a> and <a href="//github.com/angular/angular-cli" target="_blank">github.com/angular/angular-cli</a></p>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/heroes">Heroes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Inactive</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-7">
+            <!-- <app-heroes></app-heroes>-->
+            <!-- by importing AppRoutingModule (which exported RouterModule), this app.component can now use  <Router-Outlet> tag-->
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-5">
+            <app-messages></app-messages>
+        </div>
+    </div>
+</div>
