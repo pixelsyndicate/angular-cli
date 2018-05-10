@@ -1,7 +1,12 @@
 import { CommandScope, Option } from '../models/command';
 import { Version } from '../upgrade/version';
-import { ArchitectCommand, ArchitectCommandOptions } from '../models/architect-command';
+import { ArchitectCommand } from '../models/architect-command';
 
+export interface Options {
+  project?: string;
+  configuration?: string;
+  prod: boolean;
+}
 
 export default class ServeCommand extends ArchitectCommand {
   public readonly name = 'serve';
@@ -14,14 +19,29 @@ export default class ServeCommand extends ArchitectCommand {
     this.configurationOption
   ];
 
-  public validate(_options: ArchitectCommandOptions) {
+  public validate(_options: Options) {
     // Check Angular and TypeScript versions.
     Version.assertCompatibleAngularVersion(this.project.root);
     Version.assertTypescriptVersion(this.project.root);
     return true;
   }
 
-  public async run(options: ArchitectCommandOptions) {
-    return this.runArchitectTarget(options);
+  public async run(options: Options) {
+    let configuration = options.configuration;
+    if (!configuration && options.prod) {
+      configuration = 'production';
+    }
+
+    const overrides = { ...options };
+    delete overrides.project;
+    delete overrides.configuration;
+    delete overrides.prod;
+
+    return this.runArchitectTarget({
+      project: options.project,
+      target: this.target,
+      configuration,
+      overrides
+    }, options);
   }
 }
